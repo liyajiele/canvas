@@ -1,5 +1,5 @@
 # canvas
-## <canvas>是h5中的新标签
+## <canvas>是h5中的新标签<br>
   <script type="text/javascript">
     var canvas=document.getElementById('myCanvas');
     var ctx=canvas.getContext('2d');
