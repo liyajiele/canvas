@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		
+	</style>
+	<body>
+		<canvas width="500" height="500"></canvas>
+	</body>
+</html>
+<style>
+	canvas{
+		background: #CCCCCC;
+	}
+</style>
+<script>
+	//高级语言  和人类沟通
+	window.onload=function(){
+		var canvas=document.querySelector("canvas");
+		var cobj=canvas.getContext("2d");
+//cobj在内存中
+//在canvas绘制的所有图形保存不到内存中
+//不知道该操作谁
+
+//可以动画，但是操作的是二级对象
+//两张图，不可能一起走
+//设置两个值，看似可以，但是多像素，却行不通
+/*
+    var x=0,y=0,speed=10;
+    var x1=400,speed1=10;
+    setInterval(function(){
+    	cobj.clearRect(0,0,canvas.width,canvas.height);
+    	x+=speed;
+    	x1-=speed1;
+    	y+=speed;
+    	cobj.fillRect(x,y,100,100);
+		cobj.fillRect(x1,y,100,100);
+    },50);
+*/
+
+//基准点在（0，0）点开始，提供矩阵，方便运算
+//但是基准点越来越快，因为相对于上一次而言
+/*
+//  var x=0,y=0,speed=10;
+    var speedx=1;
+    var speedy=1;
+    setInterval(function(){
+    	cobj.clearRect(0,0,canvas.width,canvas.height);
+//  	x+=speedx;
+//  	y+=speedy;
+    	cobj.translate(speedx,speedy);   //移动
+    	cobj.fillRect(0,0,100,100);
+    }, 0)
+*/
+ 
+//画布里完成动画  标准动画方式
+    var x=0,y=0,speed=1;
+    setInterval(function(){
+    	cobj.clearRect(0,0,canvas.width,canvas.height);
+    	x+=speed;
+    	y+=speed;
+   		cobj.save();   //移动之前保存状态     //开启：只有第一个走；关闭：两个一起走
+    	cobj.translate(x,y);   //画布移动
+    	cobj.fillRect(0,0,100,100);
+    	cobj.restore();    //撤回保存
+    	cobj.fillRect(100,100,100,100);
+    	
+    },50);
+
+
+
+
+
+
+
+
+	}
+</script>
