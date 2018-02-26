@@ -10,3 +10,5 @@
 * animate:燃烧的火焰
 * drawing:画板
 * game:酷跑游戏
+* smallgame->index:两个盒子移动
+* smallgame->main:随鼠标移动的泡泡
